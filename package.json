@@ -1,0 +1,25 @@
+{
+  "name": "jsl-cli",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "bin": {
+    "jsl-cli": "/bin/src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^13.1.0",
+    "inquirer": "^12.5.0",
+    "loading-cli": "^1.1.2"
+  }
+}

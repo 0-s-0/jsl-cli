@@ -1,0 +1,1 @@
+export type Framework = "Vue" | "React" | "Nuxt" | "Next"
