@@ -1,5 +1,6 @@
 export default 
-`import { createRouter, createWebHashHistory } from "vue-router";
+`// vue-router 中文文档地址 https://router.vuejs.org/zh/
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHashHistory(),
