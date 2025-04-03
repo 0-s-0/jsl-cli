@@ -7,7 +7,8 @@ import { errorLog, warnLog } from "../../utils/log";
 import mkdir from "../../utils/mkdir";
 import cloneRepo from "../../utils/cloneRepo";
 import config from "../../config";
-import installVueRouter from "./installVueRouter";
+import deleteVueRouter from "./deleteVueRouter";
+import deletePinia from "./deletePinia";
 
 export default async (name: string = "project") => {
 
@@ -38,7 +39,7 @@ export default async (name: string = "project") => {
       type: "list",
       name: "framework",
       message: "请选择使用的框架?",
-      choices: ["Vue", "React", "Nuxt", "Next"],
+      choices: ["Vue","Vue","Vue","Vue"],
     },
   ]);
 
@@ -49,7 +50,7 @@ export default async (name: string = "project") => {
       isVueRouter,
       isPinia,
       isSvg,
-      isTypescript,
+      // isTypescript,
       isI18n,
       ui,
       isAxios
@@ -59,16 +60,16 @@ export default async (name: string = "project") => {
       isVueRouter: boolean;
       isPinia: boolean;
       isSvg: boolean;
-      isTypescript: boolean;
+      // isTypescript: boolean;
       isI18n: boolean;
       ui: string;
       isAxios:boolean;
     }>([
-      {
-        type: "confirm",
-        name: "isTypescript",
-        message: `是否使用${chalk.yellow("typescript")}?`,
-      },
+      // {
+      //   type: "confirm",
+      //   name: "isTypescript",
+      //   message: `是否使用${chalk.yellow("typescript")}?`,
+      // },
       {
         type: "confirm",
         name: "isVueRouter",
@@ -116,16 +117,19 @@ export default async (name: string = "project") => {
     if (mkdir(dirPath)) return;
 
     // 下载zip
-    if (await cloneRepo(config.gitAdd, dirPath, ['--branch', isTypescript ? config.vueBranch : config.vueTsBranch])) return;
+    if (await cloneRepo(config.gitAdd, dirPath, ['--branch', config.vueBranch])) return;
 
     // 初始化路由配置 isVueRouter
-    if(isVueRouter) installVueRouter(dirPath)
+    if(!isVueRouter) deleteVueRouter(dirPath);
+    
+    // 初始化状态管理，不需要删除
+    if(!isPinia) deletePinia(dirPath)
 
-    // 安装国际化
+    // 初始化国际化
 
-    // 安装axios
+    // 初始化axios
 
-    // 安装eslint
+    // 初始化eslint
 
   } else {
     warnLog(`${framework} 暂未开放，敬请期待`);

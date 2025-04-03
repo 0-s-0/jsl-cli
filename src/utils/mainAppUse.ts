@@ -10,7 +10,7 @@ export default ({
   importCode?: string;
 }) => {
   let main = fs.readFileSync(mainPath, "utf-8");
-  main = `importCode${os.EOL}` + main;
+  main = `${importCode}${os.EOL}` + main;
   main = main.replace("createApp(App)", `createApp(App).use(${name})`);
   fs.writeFileSync(mainPath, main);
 };
