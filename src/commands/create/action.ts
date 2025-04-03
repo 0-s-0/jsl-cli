@@ -9,6 +9,7 @@ import cloneRepo from "../../utils/cloneRepo";
 import config from "../../config";
 import deleteVueRouter from "./deleteVueRouter";
 import deletePinia from "./deletePinia";
+import deleteTailwindcss from "./deleteTailwindcss";
 
 export default async (name: string = "project") => {
 
@@ -124,6 +125,9 @@ export default async (name: string = "project") => {
     
     // 初始化状态管理，不需要删除
     if(!isPinia) deletePinia(dirPath)
+
+    // 初始化tailwindcss
+    if(!isTailwindcss) deleteTailwindcss(dirPath)
 
     // 初始化国际化
 
